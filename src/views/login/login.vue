@@ -16,6 +16,13 @@ const fromInfo = reactive({
   password: ''
 })
 function login(){
+  if(!fromInfo.mobile || !fromInfo.password){
+    showDialog({
+      title: '提示',
+      message: '请输入账号和密码'
+    })
+    return false
+  }
   if(fromInfo.mobile !== infoStore.mobile || fromInfo.password !== infoStore.password ){
     showDialog({
       title: '提示',
@@ -89,7 +96,7 @@ function toRevise(){
   align-items: center;
   .from-label {
     flex-shrink: 0;
-    width: 80px;
+    width: 50px;
     img {
       width: 24px;
       height: 24px;

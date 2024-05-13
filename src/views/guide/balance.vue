@@ -232,19 +232,19 @@ const looka = () =>{
       </div>
       <div class="item-left-i">
         <span class="card-left">游玩人数：</span>
-        <span class="card-right">{{ item.num }}</span>
+        <span class="card-right">{{ item.num }} 人</span>
       </div>
       <div class="item-left-i">
         <span class="card-left">项目费用：</span>
-        <span class="card-right">{{ item.amount }}</span>
+        <span class="card-right">{{ item.amount }} 元/人</span>
       </div>
       <div class="item-left-i">
         <span class="card-left">佣金比例：</span>
-        <span class="card-right">{{ item.proportion }}</span>
+        <span class="card-right">{{ item.proportion }} %</span>
       </div>
       <div class="item-left-i">
         <span class="card-left">结算金额：</span>
-        <span class="card-right">{{ item.income }}</span>
+        <span class="card-right">{{ item.income }} 元</span>
       </div>
       <div class="item-left-i time">
         <span class="card-left">时间：</span>
@@ -301,7 +301,7 @@ const looka = () =>{
   }
   .item-left-i {
     width: 50%;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .item-left-i.time {
     width: 100%;

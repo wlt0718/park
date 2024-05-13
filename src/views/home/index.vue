@@ -48,16 +48,16 @@ const hisbalance = () =>{
     </div>
     <div class="main">
        <div class="main-item" @click="toAddPlay">
-            <img src="../../assets/icon/add.png" alt="" class="add-img"/>
+            <van-icon name="records" class="add-img" />
             <div class="add-text">新增游玩</div>
        </div>
        <div class="main-item">
             <div class="main-right-item" @click="toBalance">
-                <img src="../../assets/icon/box.png" alt="" class="right-img" />
+                <van-icon name="bars" class="right-img" />
                 <span class="add-text">结算列表</span>
             </div>
             <div class="main-right-item" @click="toEnterStore">
-                <img src="../../assets/icon/home.png" alt="" class="right-img" />
+                <van-icon name="wap-home" class="right-img" />
                 <span class="add-text">名下商家</span>
             </div>
        </div>
@@ -81,15 +81,16 @@ const hisbalance = () =>{
     height: 100%;
     overflow: auto;
     background: linear-gradient(180deg, 
-    #A2D6F7 0%, #A7D2EE 73%, rgba(117, 201, 255, 0) 100%);
+    #94d1fa 0%, #94d1fa 100%);
 }
 .amounts {
-    width: 100%;
+    margin: 12px;
     height: 120px;
-    background: rgba(255, 255, 255, 0.8);
+    background: #3a5bca;
     display: flex;
     align-items: center;
-    color: #3d3d3d;
+    color: #ffffff;
+    border-radius: 12px;
     .item {
         width: 50%;
         text-align: center;
@@ -127,10 +128,8 @@ const hisbalance = () =>{
         border-right: none;
     }
     .add-img {
-        width: 70px;
-        height: 70px;
+        font-size: 70px;
         margin: 0 auto;
-        display: block;
     }
     .add-text {
         margin-top: 15px;
@@ -149,8 +148,7 @@ const hisbalance = () =>{
         border-bottom: none;
     }
     .right-img {
-        width: 40px;
-        height: 40px;
+        font-size: 40px;
         padding-right: 12px;
         display: block;
     }

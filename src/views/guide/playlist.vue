@@ -34,7 +34,7 @@ const dataProject = reactive([
         ]
     },
     {
-        merchantName: '上海市方特世界',
+        merchantName: '上海方特世界',
         id: 5,
         project: [{
             id: '200001',
@@ -62,7 +62,7 @@ const dataProject = reactive([
           },]
     },
     {
-        merchantName: '上海市环球港',
+        merchantName: '上海环球港',
         id: 6,
         project: [{
             id: '300001',
@@ -93,7 +93,6 @@ const dataProject = reactive([
 const checkMerchant = ref(-1)
 const checkProject = ref('100000')
 const checkDate = ref('date')
-console.log(checkProject.value)
 const merchantList = computed(() =>{
   const list = [
     { text: '所有商家', value: -1 }
@@ -104,7 +103,6 @@ const merchantList = computed(() =>{
   })
   return list
 })
-console.log(merchantList)
 // 所有项目
 const projectList = ref([
   { text: '所有项目', value: '100000' }
@@ -117,7 +115,6 @@ watch(checkMerchant, (newValue, oldValue) =>{
   const check = merchantList.value.find(el =>{
     return el.value === newValue
   })
-  console.log(check)
   if(newValue !== -1) {
     const data = dataProject.find(el => {
       return el.id === check.value
@@ -156,11 +153,33 @@ const looka = () =>{
         message: '这里是失败原因'
     })
 }
+const dataList = computed(() => {
+  console.log(checkMerchant.value)
+  if(checkMerchant.value == -1){
+    return playListStore.data
+  } else {
+    const findel = merchantList.value.find(el => {
+      return el.value === checkMerchant.value
+    })
+    const a = playListStore.data.filter(el => {
+      return el.name === findel.text
+    })
+    console.log(a)
+    return a
+  }
+ 
+})
+const merchantChange = (value) =>{
+
+}
+const projectChange = (value) =>{
+
+}
 </script>
 <template>
 <van-dropdown-menu>
-  <van-dropdown-item v-model="checkMerchant" :options="merchantList" />
-  <van-dropdown-item v-model="checkProject" :options="projectList" />
+  <van-dropdown-item v-model="checkMerchant" :options="merchantList" @change="merchantChange"/>
+  <van-dropdown-item v-model="checkProject" :options="projectList" @change="projectChange"/>
   <van-dropdown-item v-model="checkDate" :options="dateList" @change="dateChange" />
 </van-dropdown-menu>
 <!-- 日期区间 -->
@@ -168,7 +187,7 @@ const looka = () =>{
   allow-same-day position="top"
   />
 <div class="playlist">
-  <div class="list-item" v-for="item in playListStore.data" :key="item.id">
+  <div class="list-item" v-for="item in dataList" :key="item.id">
     <div class="item-left">
       <div class="item-left-i">
         <span class="card-left">商家：</span>
@@ -180,19 +199,19 @@ const looka = () =>{
       </div>
       <div class="item-left-i">
         <span class="card-left">游玩人数：</span>
-        <span class="card-right">{{ item.num }}</span>
+        <span class="card-right">{{ item.num }} 人</span>
       </div>
       <div class="item-left-i">
         <span class="card-left">项目费用：</span>
-        <span class="card-right">{{ item.amount }}</span>
+        <span class="card-right">{{ item.amount }} 元/人</span>
       </div>
       <div class="item-left-i">
         <span class="card-left">佣金比例：</span>
-        <span class="card-right">{{ item.proportion }}</span>
+        <span class="card-right">{{ item.proportion }} %</span>
       </div>
       <div class="item-left-i">
         <span class="card-left">结算金额：</span>
-        <span class="card-right">{{ item.income }}</span>
+        <span class="card-right">{{ item.income }} 元</span>
       </div>
       <div class="item-left-i time">
         <span class="card-left">时间：</span>
