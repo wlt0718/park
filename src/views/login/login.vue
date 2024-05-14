@@ -49,7 +49,7 @@ function toRevise(){
       <label for="mobile" class="from-label">
         <img src="../../assets/icon/user.png" alt="" />
       </label>
-      <input id="mobile" class="from-input" type="tel" max="11" placeholder="请输入手机号" v-model="fromInfo.mobile" />
+      <input id="mobile" class="from-input" type="number" max="11" placeholder="请输入手机号" v-model="fromInfo.mobile" />
     </div>
     <div class="from-item">
       <label for="password" class="from-label">

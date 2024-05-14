@@ -48,16 +48,18 @@ const hisbalance = () =>{
     </div>
     <div class="main">
        <div class="main-item" @click="toAddPlay">
-            <van-icon name="records" class="add-img" />
+        <img src="../../assets/svg/addplay.svg" alt=""  class="add-img" />
+            <!-- <van-icon <van-icon name="https://fastly.jsdelivr.net/npm/@vant/assets/icon-demo.png" /> class="add-img" /> -->
             <div class="add-text">新增游玩</div>
        </div>
        <div class="main-item">
             <div class="main-right-item" @click="toBalance">
-                <van-icon name="bars" class="right-img" />
+                <img src="../../assets/svg/jiesuan.svg" alt=""  class="right-img" />
                 <span class="add-text">结算列表</span>
             </div>
             <div class="main-right-item" @click="toEnterStore">
-                <van-icon name="wap-home" class="right-img" />
+                <!-- <van-icon name="wap-home" class="right-img" /> -->
+                <img src="../../assets/svg/shop.svg" alt=""  class="right-img" />
                 <span class="add-text">名下商家</span>
             </div>
        </div>
@@ -80,13 +82,13 @@ const hisbalance = () =>{
     width: 100%;
     height: 100%;
     overflow: auto;
-    background: linear-gradient(180deg, 
-    #94d1fa 0%, #94d1fa 100%);
+    background: rgba($color: #276ace, $alpha: 0.1);
 }
 .amounts {
     margin: 12px;
     height: 120px;
-    background: #3a5bca;
+    background: linear-gradient(-90deg, #29bdd9, #276ace);
+    // background: linear-gradient(135deg, #c850c0, #4158d0);
     display: flex;
     align-items: center;
     color: #ffffff;
@@ -115,7 +117,7 @@ const hisbalance = () =>{
     height: 160px;
     padding: 10px;
     border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     align-items: center;
 
@@ -123,12 +125,14 @@ const hisbalance = () =>{
 .main-item {
     width: 50%;
     text-align: center;
-    border-right: 1px solid #5075FF;
+    border-right: 1px solid #b1c2ff;
     &:last-child {
         border-right: none;
     }
     .add-img {
-        font-size: 70px;
+        width: 80px;
+        height: 80px;
+        display: block;
         margin: 0 auto;
     }
     .add-text {
@@ -143,14 +147,16 @@ const hisbalance = () =>{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #5075FF;
+    border-bottom: 1px solid #b1c2ff;
     &:last-child {
         border-bottom: none;
     }
     .right-img {
+        width: 40px;
+        height: 40px;
+        display: block;
         font-size: 40px;
         padding-right: 12px;
-        display: block;
     }
     .add-text {
         font-size: 20px;
@@ -165,7 +171,7 @@ const hisbalance = () =>{
     margin: 20px 12px 0;
     padding: 14px 0;
     border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     justify-content: space-around;
     .nav-item {
