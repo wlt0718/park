@@ -126,6 +126,18 @@ function confirmAdd(){
         addplayShow.value = false
     }
 }
+const showPicker = ref(false)
+const columns = [
+    { text: '香港迪士尼', value: 'Hangzhou' },
+    { text: '上海滴水湖', value: 'Ningbo' },
+    { text: '北京圆明园', value: 'Wenzhou' },
+    { text: '杭州西湖', value: 'Shaoxing' },
+    { text: '湖北神农架', value: 'Huzhou' },
+]
+const onConfirm = (value) => {
+    addMerchantName.value = value.selectedOptions[0].text
+    showPicker.value = false
+}
 </script>
 <template>
 <div class="store">
@@ -156,11 +168,12 @@ function confirmAdd(){
   class="popup"
 >
     <div class="popuptitle">入驻新商家</div>
-    <div class="from-item">
+    <div class="from-item" @click="showPicker = true">
       <label for="name" class="from-label">
-        商家名称
+        商家：
       </label>
-      <input id="name" class="from-input" type="text" placeholder="请输入商家名称" v-model="addMerchantName" />
+      <input id="name" class="from-input" type="text" placeholder="请选择商家" v-model="addMerchantName" readonly />
+      <van-icon name="arrow" class="right-icon" />
     </div>
     <button type="button" class="btn" @click="confirmAdd">确认入驻</button>
 </van-popup>
@@ -185,6 +198,13 @@ function confirmAdd(){
             <van-tag type="primary" size="medium" v-for="item in showData.project" :key="item">{{ item }}</van-tag>
         </div>
     </div>
+</van-popup>
+<van-popup v-model:show="showPicker" round position="bottom">
+  <van-picker
+    :columns="columns"
+    @cancel="showPicker = false"
+    @confirm="onConfirm"
+  />
 </van-popup>
 </template>
 <style lang="scss" scoped>
@@ -315,5 +335,9 @@ function confirmAdd(){
         margin-right: 10px;
         margin-bottom: 20px;
     }
+}
+.right-icon {  
+    font-size: 20px;
+    color: #666666;
 }
 </style>

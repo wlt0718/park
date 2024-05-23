@@ -6,7 +6,6 @@ import { userInfoStore } from '../../stores/user.js'
 const infoStore = userInfoStore()
 const router = useRouter()
 const userInfo = reactive({
-  usertype:  '1',
   mobile: '',
   password: '',
   confirmPassrowd: '',
@@ -46,7 +45,6 @@ function register(){
   }
   infoStore.SET_mobile(userInfo.mobile)
   infoStore.SET_password(userInfo.password)
-  infoStore.SET_userType(userInfo.usertype)
   showDialog({
     message: '注册成功！去登录'
   }).then(()=>{
@@ -77,13 +75,6 @@ function getSms(){
 <div class="login">
   <div class="title">账号注册</div>
   <div class="from">
-    <div class="from-item type">
-      <label for="mobile" class="from-label">您的身份</label>
-      <div class="usertype">
-        <div class="usertype-item" :class="userInfo.usertype === '1' ? 'select':''" @click="userInfo.usertype = '1'">商家</div>
-        <div class="usertype-item" :class="userInfo.usertype === '2' ? 'select':''" @click="userInfo.usertype = '2'">导游</div>
-      </div>
-    </div>
     <div class="from-item">
       <label for="mobile" class="from-label">手机号</label>
       <input id="mobile" class="from-input" type="tel" max="11" placeholder="请输入手机号" v-model="userInfo.mobile"/>
@@ -143,25 +134,6 @@ function getSms(){
     flex-grow: 1;
     height: 100%;
     line-height: 1;
-  }
-}
-.usertype {
-  display: flex;
-  div {
-    height: 30px;
-    width: 70px;
-    color: #999999;
-    border: 1px solid #999999;
-    text-align: center;
-    line-height: 14px;
-    padding: 7px;
-    margin-right: 20px;
-    border-radius: 4px;
-  }
-  div.select {
-    border-color: var(--default-color);
-    background-color: var(--default-color);
-    color: #fff;
   }
 }
 .btn {

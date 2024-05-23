@@ -124,7 +124,7 @@ const projectPopup = ref(false)
 const projectDefault = ref(-1)
 const projectData = computed(() =>{
   const findMerchant = dataProject.find(el =>{
-    return el.id === merchantDefault.value
+    return el.merchantName === fromData.name
   })
   return findMerchant
 })
