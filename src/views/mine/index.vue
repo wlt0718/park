@@ -24,6 +24,11 @@ const toBalance = () => {
         name: 'balance'
     })
 }
+const toOrder = () => {
+    router.push({
+        name: 'order'
+    })
+}
 </script>
 <template>
 <div class="header">
@@ -39,14 +44,19 @@ const toBalance = () => {
     </div>
 </div>
 <div class="nav-list">
-    <div class="nav-item" @click="toEnterStore">
+    <div class="nav-item" @click="toOrder">
         <van-icon name="wap-home-o" class="left-icon" />
-        <span>名下商家</span>
+        <span>游客订单</span>
         <van-icon name="arrow" class="right-icon" />
     </div>
     <div class="nav-item" @click="toPlayList">
         <van-icon name="wap-nav" class="left-icon" />
-        <span>游玩列表</span>
+        <span>带客列表</span>
+        <van-icon name="arrow" class="right-icon" />
+    </div>
+    <div class="nav-item" @click="toEnterStore">
+        <van-icon name="wap-home-o" class="left-icon" />
+        <span>名下商家</span>
         <van-icon name="arrow" class="right-icon" />
     </div>
     <div class="nav-item" @click="toBalance">

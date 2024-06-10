@@ -69,7 +69,15 @@ const routes = [
         name: 'addplay',
         component: () => import('@/views/guide/addplay.vue'),
         meta: {
-            title: '新增游玩'
+            title: '选择商家'
+        }
+    },
+    {
+        path: '/playinfo',
+        name: 'playinfo',
+        component: () => import('@/views/guide/playinfo.vue'),
+        meta: {
+            title: '选择项目'
         }
     },
     {
@@ -77,7 +85,7 @@ const routes = [
         name: 'playList',
         component: () => import('@/views/guide/playlist.vue'),
         meta: {
-            title: '游玩列表'
+            title: '带客列表'
         }
     },
     {
@@ -88,7 +96,22 @@ const routes = [
             title: '立即结算'
         }
     },
-
+    {
+        path: '/order',
+        name: 'order',
+        component: () => import('@/views/mine/order.vue'),
+        meta: {
+            title: '游客订单'
+        }
+    },
+    {
+        path: '/listInfo',
+        name: 'listInfo',
+        component: () => import('@/views/guide/playlistInfo.vue'),
+        meta: {
+            title: '带客详情'
+        }
+    },
 
 ]
 const router = createRouter({

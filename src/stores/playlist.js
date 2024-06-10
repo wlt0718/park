@@ -13,7 +13,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 60,
                     time: '2024年04月29日 11:30:30',
                     status: 0,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430001'
                 },
                 {
                     id: 2,
@@ -25,7 +26,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 30,
                     time: '2024年04月29日 11:30:30',
                     status: 1,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430002'
                 },
                 {
                     id: 3,
@@ -37,7 +39,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 120,
                     time: '2024年04月29日 11:30:30',
                     status: 2,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430003'
                 },
                 {
                     id: 4,
@@ -49,7 +52,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 120,
                     time: '2024年04月29日 11:30:30',
                     status: 0,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430004'
                 },
                 {
                     id: 5,
@@ -61,7 +65,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 120,
                     time: '2024年04月29日 11:30:30',
                     status: 1,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430005'
                 },
                 {
                     id: 6,
@@ -73,7 +78,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 120,
                     time: '2024年04月29日 11:30:30',
                     status: 1,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430006'
                 },
                 {
                     id: 7,
@@ -85,7 +91,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 120,
                     time: '2024年04月29日 11:30:30',
                     status: 0,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430007'
                 },
                 {
                     id: 8,
@@ -97,7 +104,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 120,
                     time: '2024年04月29日 11:30:30',
                     status: 0,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430008'
                 },
                 {
                     id: 9,
@@ -109,7 +117,8 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     income: 120,
                     time: '2024年04月29日 11:30:30',
                     status: 0,
-                    failText: ''
+                    failText: '',
+                    dkid: '激流勇进20240430009'
                 },
                 
             ],
@@ -129,6 +138,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430001'
                 },
                 {
                     listId: '1000002',
@@ -145,6 +155,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430002'
                 },
                 {
                     listId: '1000003',
@@ -161,6 +172,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430003'
                 },
                 {
                     listId: '1000004',
@@ -177,6 +189,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430004'
                 },
                 {
                     listId: '1000005',
@@ -193,6 +206,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430005'
                 },
                 {
                     listId: '1000006',
@@ -209,6 +223,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430006'
                 },
                 {
                     listId: '1000007',
@@ -225,6 +240,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430007'
                 },
                 {
                     listId: '1000008',
@@ -241,6 +257,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430008'
                 },
                 {
                     listId: '1000009',
@@ -257,6 +274,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430009'
                 },
                 {
                     listId: '1000010',
@@ -273,6 +291,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430010'
                 },
                 {
                     listId: '1000011',
@@ -289,6 +308,7 @@ export const userPlayListStore = defineStore('userPlayListStore', {
                     playFailText: '',
                     settlement: 0,  // 结算状态，0未结算，1结算成功，2结算失败
                     settlementFailText: '',  // 结算失败原因
+                    dkid: '激流勇进20240430011'
                 },
             ]
 

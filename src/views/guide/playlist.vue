@@ -1,6 +1,8 @@
 <script setup>
 import { ref, reactive, computed, watch } from 'vue';
 import { userPlayListStore } from '../../stores/playlist.js'
+import { useRouter } from 'vue-router';
+const router = useRouter()
 const playListStore = userPlayListStore()
 const dataProject = reactive([
     {
@@ -11,7 +13,7 @@ const dataProject = reactive([
             id: '100001',
             name: '上海欢乐谷游艇',
             amounts: 60,
-            proportion: 5
+            proportion: 5,
           },
           {
             id: '100002',
@@ -175,6 +177,11 @@ const merchantChange = (value) =>{
 const projectChange = (value) =>{
 
 }
+function toInfo(){
+  router.push({
+    name: 'listInfo'
+  })
+}
 </script>
 <template>
 <van-dropdown-menu>
@@ -187,7 +194,7 @@ const projectChange = (value) =>{
   allow-same-day position="top"
   />
 <div class="playlist">
-  <div class="list-item" v-for="item in dataList" :key="item.id">
+  <div class="list-item" v-for="item in dataList" :key="item.id" @click="toInfo">
     <div class="item-left">
       <div class="item-left-i">
         <span class="card-left">商家：</span>
@@ -198,10 +205,6 @@ const projectChange = (value) =>{
         <span class="card-right">{{ item.project }}</span>
       </div>
       <div class="item-left-i">
-        <span class="card-left">游玩人数：</span>
-        <span class="card-right">{{ item.num }} 人</span>
-      </div>
-      <div class="item-left-i">
         <span class="card-left">项目费用：</span>
         <span class="card-right">{{ item.amount }} 元/人</span>
       </div>
@@ -209,9 +212,17 @@ const projectChange = (value) =>{
         <span class="card-left">佣金比例：</span>
         <span class="card-right">{{ item.proportion }} %</span>
       </div>
+      <div class="item-left-i time">
+        <span class="card-left">带客编号：</span>
+        <span class="card-right"> {{  item.dkid }}</span>
+      </div>
+      <div class="item-left-i">
+        <span class="card-left">游玩人次：</span>
+        <span class="card-right">{{ item.num }} 次</span>
+      </div>
       <div class="item-left-i">
         <span class="card-left">结算金额：</span>
-        <span class="card-right">{{ item.income }} 元</span>
+        <span class="card-right weight">{{ item.income }} 元</span>
       </div>
       <div class="item-left-i time">
         <span class="card-left">时间：</span>
@@ -219,10 +230,9 @@ const projectChange = (value) =>{
       </div>
     </div>
     <div class="item-right">
-      <div class="status" v-if="item.status === 1" style="background-color: #67c23a">审核通过</div>
-      <div class="status" v-if="item.status === 0" style="background-color: #E6A23C">未审核</div>
-      <div class="status" v-if="item.status === 2" style="background-color: #f56c6c">审核失败</div>
-      <div class="failtext" v-if="item.status === 2" style="color: #f56c6c" @click="looka">查看原因</div>
+      <div class="status" v-if="item.status === 1" style="color: #67c23a">审核通过</div>
+      <div class="status" v-if="item.status === 0" style="color: #E6A23C">未审核</div>
+      <div class="status" v-if="item.status === 2" style="color: #f56c6c">审核失败</div>
     </div>
   </div>
 </div>
@@ -233,24 +243,21 @@ const projectChange = (value) =>{
 }
 .list-item {
   padding: 12px;
+  padding-bottom: 0;
   background-color: #fff;
   margin-bottom: 12px;
   font-size: 14px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-radius: 12px;
+  align-items: flex-start;
+  border-radius: 6px;
   box-shadow: 0 0 4px 1px rgba(0,0,0,0.1);
   color: #666666;
   .item-right {
     flex-shrink: 0;
-    width: 72px;
     text-align: center;
   }
   .status {
-    padding: 6px 8px;
-    color: #fff;
-    background-color: aqua;
     border-radius: 6px;
   }
   .failtext {
@@ -267,9 +274,11 @@ const projectChange = (value) =>{
     width: 50%;
     margin-bottom: 8px;
   }
-  .item-left-i.time {
+  .item-left-i.time{
     width: 100%;
-    margin-bottom: 0;
+  }
+  .card-right.weight {
+    font-weight: 600;
   }
 }
 </style>

@@ -16,23 +16,11 @@ const toEnterStore = () => {
         name: 'enterStore'
     })
 }
-const toPlayList = () =>{
-    router.push({
-        name: 'playList'
-    })
-}
 const toBalance = () => {
     router.push({
         name: 'balance'
     })
 }
-const hisbalance = () =>{
-    showDialog({
-        title: '提示',
-        message: '暂未开放。'
-    })
-}
-
 </script>
 <template>
 <div class="home">
@@ -48,9 +36,8 @@ const hisbalance = () =>{
     </div>
     <div class="main">
        <div class="main-item" @click="toAddPlay">
-        <img src="../../assets/svg/addplay.svg" alt=""  class="add-img" />
-            <!-- <van-icon <van-icon name="https://fastly.jsdelivr.net/npm/@vant/assets/icon-demo.png" /> class="add-img" /> -->
-            <div class="add-text">新增游玩</div>
+            <van-icon name="records" class="add-img" />
+            <div class="add-text">带客游玩</div>
        </div>
        <div class="main-item">
             <div class="main-right-item" @click="toBalance">
@@ -64,17 +51,6 @@ const hisbalance = () =>{
             </div>
        </div>
     </div>
-    <nav class="func">
-        <div class="nav-item" @click="toPlayList">
-            <van-icon name="wap-nav" />
-            <div class="nav-text">游玩列表</div>
-        </div>
-
-        <div class="nav-item" @click="hisbalance">
-            <van-icon name="weapp-nav" />
-            <div class="nav-text">历史结算</div>
-        </div>
-    </nav>
 </div>
 </template>
 <style lang="scss" scoped>
@@ -130,10 +106,9 @@ const hisbalance = () =>{
         border-right: none;
     }
     .add-img {
-        width: 80px;
-        height: 80px;
         display: block;
         margin: 0 auto;
+        font-size: 60px;
     }
     .add-text {
         margin-top: 15px;
@@ -166,22 +141,5 @@ const hisbalance = () =>{
 .van-icon {
     font-size: 30px;
     color: #5075FF;
-}
-.func {
-    margin: 20px 12px 0;
-    padding: 14px 0;
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 1);
-    display: flex;
-    justify-content: space-around;
-    .nav-item {
-        text-align: center;
-        .nav-text {
-            font-size: 14px;
-            line-height: 14px;
-            color: #666666;
-            margin-top: 8px;
-        }
-    }
 }
 </style>
