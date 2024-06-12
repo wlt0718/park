@@ -112,6 +112,22 @@ const routes = [
             title: '带客详情'
         }
     },
+    {
+        path: '/merchant/project',
+        name: 'merchantProject',
+        component: () => import('@/views/merchant/project.vue'),
+        meta: {
+            title: '商家详情'
+        }
+    },
+    {
+        path: '/merchant/enter',
+        name: 'merchantEnter',
+        component: () => import('@/views/merchant/enter.vue'),
+        meta: {
+            title: '入驻新商家'
+        }
+    },
 
 ]
 const router = createRouter({

@@ -1,84 +1,23 @@
 <script setup>
 import { ref, reactive } from "vue";
 import { showDialog, showConfirmDialog  } from 'vant';
-const data = reactive([
-/**
- * status: 0 审核中，1 审核通过，2 审核失败 
- *  
- **/
-    {
-        id: 0,
-        merchantName: '上海欢乐谷',
-        address: '上海市松江区林湖路888号',
-        status: '1' 
-    },
-    {
-        id: 1,
-        merchantName: '上海迪士尼',
-        address: '上海市松江区林湖路888号',
-        status: '2' 
-    },
-    {
-        id: 2,
-        merchantName: '上海共青森林公园',
-        address: '上海市松江区林湖路888号',
-        status: '0' 
-    },
-    {
-        id: 3,
-        merchantName: '上海动物园',
-        address: '上海市松江区林湖路888号',
-        status: '0' 
-    },
-    {
-        id: 4,
-        merchantName: '上海人民公园',
-        address: '上海市松江区林湖路888号',
-        status: '0' 
-    },
-    {
-        id: 5,
-        merchantName: '上海市方特世界',
-        address: '上海市松江区林湖路888号',
-        status: '1' 
-    },
-    {
-        id: 6,
-        merchantName: '上海市环球港',
-        address: '上海市松江区林湖路888号',
-        status: '1' 
-    },
-])
-const dataProject = reactive([
-    {
-        parentId: 0,
-        id: '100001',
-        project: ['欢乐谷游艇', '欢乐谷摩天轮', '欢乐谷恐龙乐园', '欢乐谷天地双雄', '欢乐谷小鲤鱼历险记', '欢乐谷4D空间']
-    },
-    {
-        parentId: 5,
-        id: '100001',
-        project: ['方特世界游艇', '方特世界摩天轮', '方特世界恐龙乐园', '方特世界天地双雄', '方特世界小鲤鱼历险记', '方特世界4D空间']
-    },
-    {
-        parentId: 6,
-        id: '100001',
-        project: ['环球港游艇', '环球港摩天轮', '环球港恐龙乐园', '环球港4D空间']
-    }
-])
-// 查看商家
-const lookShow = ref(false)
-const showData = reactive({
-    name: '',
-    project: []
-})
-function look(item){
-    const findMerchant = dataProject.find(el =>{
-        return el.parentId === item.id
+import { userMerchantStore } from '../../stores/merchant.js'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const userMerchant = userMerchantStore()
+const data = userMerchant.list
+function lookMerchant(item){
+    router.push({
+        path: '/merchant/project',
+        query: {
+            id: item.id
+        }
     })
-    showData.name = item.merchantName
-    showData.project = findMerchant.project
-    lookShow.value = true
+}
+function enterNewMerchant(){
+    router.push({
+        path: '/merchant/enter'
+    })
 }
 /* 删除商家 */
 function remove(item){
@@ -87,56 +26,16 @@ function remove(item){
             title: '提示',
             message: '商家还在审核中，是否删除？'
         }).then(() =>{
-            const index = data.findIndex(el => {
-                return el.id === item.id
-            })
-            data.splice(index,1)
+            userMerchant.Set_list_remove(item.id)
         }).catch(() =>{})
     } else {
         showConfirmDialog({
             title: '提示',
             message: '该商家为无效商家，您不能参与其名下项目推广，是否删除？'
         }).then(() =>{
-            const index = data.findIndex(el => {
-                return el.id === item.id
-            })
-            data.splice(index,1)
+            userMerchant.Set_list_remove(item.id)
         }).catch(() =>{})
     }
-}
-const addplayShow = ref(false)
-/** 新增商家 */
-const addMerchantName = ref('')
-function confirmAdd(){
-    if(!addMerchantName.value){
-        showDialog({
-            title: '提示',
-            message: '商家名称不能为空'
-        })
-        return
-    } else {
-        const id = data[data.length - 1].id + 1
-        const newData = {
-            id,
-            merchantName: addMerchantName.value,
-            address: '上海市松江区林湖路888号',
-            status: '0' 
-        }
-        data.push(newData)
-        addplayShow.value = false
-    }
-}
-const showPicker = ref(false)
-const columns = [
-    { text: '香港迪士尼', value: 'Hangzhou' },
-    { text: '上海滴水湖', value: 'Ningbo' },
-    { text: '北京圆明园', value: 'Wenzhou' },
-    { text: '杭州西湖', value: 'Shaoxing' },
-    { text: '湖北神农架', value: 'Huzhou' },
-]
-const onConfirm = (value) => {
-    addMerchantName.value = value.selectedOptions[0].text
-    showPicker.value = false
 }
 </script>
 <template>
@@ -152,60 +51,17 @@ const onConfirm = (value) => {
             <span style="color: #ED6A0C" v-if="item.status === '0'">商家确认中</span>
         </div>
         <div class="item-right">   
-            <div v-if="item.status === '1'" class="look" @click="look(item)">查看</div>
+            <div v-if="item.status === '1'" class="look" @click="lookMerchant(item)">查看</div>
             <van-icon name="delete-o" class="store-icon" v-else @click="remove(item)"/>
         </div>
     </div>
 </div>
+<div class="footer-box"></div>
 <div class="footer">
-    <button type="button" class="btn" @click="addplayShow = true">入驻新商家</button>
+  <div class="footer-btn">
+    <van-button color="#5075ff" @click="enterNewMerchant" round block>入驻新商家</van-button>
+  </div>
 </div>
-<van-popup
-  v-model:show="addplayShow"
-  position="center"
-  round
-  closeable
-  class="popup"
->
-    <div class="popuptitle">入驻新商家</div>
-    <div class="from-item" @click="showPicker = true">
-      <label for="name" class="from-label">
-        商家：
-      </label>
-      <input id="name" class="from-input" type="text" placeholder="请选择商家" v-model="addMerchantName" readonly />
-      <van-icon name="arrow" class="right-icon" />
-    </div>
-    <button type="button" class="btn" @click="confirmAdd">确认入驻</button>
-</van-popup>
-<van-popup
-    v-model:show="lookShow"
-    position="center"
-    round
-    closeable
-    class="merchantPopup"
->
-    <div class="from-item">
-        <div class="from-label">
-            商家名称
-        </div>
-        <div class="from-input">{{ showData.name }}</div>
-    </div>
-    <div class="from-item project">
-        <div class="from-label">
-            名下项目
-        </div>
-        <div class="from-project">
-            <van-tag type="primary" size="medium" v-for="item in showData.project" :key="item">{{ item }}</van-tag>
-        </div>
-    </div>
-</van-popup>
-<van-popup v-model:show="showPicker" round position="bottom">
-  <van-picker
-    :columns="columns"
-    @cancel="showPicker = false"
-    @confirm="onConfirm"
-  />
-</van-popup>
 </template>
 <style lang="scss" scoped>
 .store {
@@ -339,5 +195,25 @@ const onConfirm = (value) => {
 .right-icon {  
     font-size: 20px;
     color: #666666;
+}
+.footer-box {
+  height: 70px;
+}
+.footer {
+  width: 100%;
+  height: 60px;
+  padding: 0 12px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .footer-btn {
+    flex-grow: 1;
+  }
 }
 </style>

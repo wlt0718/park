@@ -56,7 +56,7 @@ const toOrder = () => {
     </div>
     <div class="nav-item" @click="toEnterStore">
         <van-icon name="wap-home-o" class="left-icon" />
-        <span>名下商家</span>
+        <span>商家列表</span>
         <van-icon name="arrow" class="right-icon" />
     </div>
     <div class="nav-item" @click="toBalance">

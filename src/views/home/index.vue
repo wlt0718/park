@@ -45,9 +45,8 @@ const toBalance = () => {
                 <span class="add-text">结算列表</span>
             </div>
             <div class="main-right-item" @click="toEnterStore">
-                <!-- <van-icon name="wap-home" class="right-img" /> -->
                 <img src="../../assets/svg/shop.svg" alt=""  class="right-img" />
-                <span class="add-text">名下商家</span>
+                <span class="add-text">商家列表</span>
             </div>
        </div>
     </div>
