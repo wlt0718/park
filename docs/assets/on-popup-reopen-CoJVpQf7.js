@@ -1,1 +1,0 @@
-import{P as a,h as n}from"./index-C24B96dT.js";import{O as e,y as r}from"./index-Dh-pVtGN.js";function c(s,{args:t=[],done:o,canceled:i,error:p}){if(s){const f=s.apply(null,t);a(f)?f.then(l=>{l?o():i&&i()}).catch(p||n):f?o():i&&i()}else o()}const u=Symbol();function h(s){const t=e(u,null);t&&r(t,o=>{o&&s()})}export{u as P,c,h as o};
