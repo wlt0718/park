@@ -216,7 +216,6 @@ const looka = () =>{
 <van-dropdown-menu>
   <van-dropdown-item v-model="checkBalance" :options="banlaceList" />
   <van-dropdown-item v-model="checkMerchant" :options="merchantList" />
-  <van-dropdown-item v-model="checkProject" :options="projectList" />
   <van-dropdown-item v-model="checkDate" :options="dateList" @change="dateChange" />
 </van-dropdown-menu>
 <div class="playlist">

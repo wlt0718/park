@@ -4,7 +4,6 @@ import { userInfoStore } from '../../stores/user.js'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const value1 = ref(0);
-const value2 = ref('a');
 const value3 = ref('z');
 const checkDate = ref('date')
 const canlendarShow = ref(false)
@@ -32,11 +31,6 @@ const option1 = [
   { text: '上海迪士尼', value: 1 },
   { text: '上海欢乐谷', value: 2 },
 ];
-const option2 = [
-  { text: '全部项目', value: 'a' },
-  { text: '项目二', value: 'b' },
-  { text: '项目三', value: 'c' },
-];
 const option3 = [
   { text: '全部状态', value: 'z' },
   { text: '已下单', value: 'x' },
@@ -51,7 +45,6 @@ function toinfo(){
 <template>
 <van-dropdown-menu active-color="#ee0a24">
   <van-dropdown-item v-model="value1" :options="option1" />
-  <van-dropdown-item v-model="value2" :options="option2" />
   <van-dropdown-item v-model="checkDate" :options="dateList" @change="dateChange" />
   <van-dropdown-item v-model="value3" :options="option3" />
 </van-dropdown-menu>

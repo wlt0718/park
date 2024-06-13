@@ -149,12 +149,6 @@ const dateChange = (value) =>{
     canlendarShow.value = true
   }
 }
-const looka = () =>{
-    showDialog({
-        title: '提示',
-        message: '这里是失败原因'
-    })
-}
 const dataList = computed(() => {
   console.log(checkMerchant.value)
   if(checkMerchant.value == -1){
@@ -186,7 +180,6 @@ function toInfo(){
 <template>
 <van-dropdown-menu>
   <van-dropdown-item v-model="checkMerchant" :options="merchantList" @change="merchantChange"/>
-  <van-dropdown-item v-model="checkProject" :options="projectList" @change="projectChange"/>
   <van-dropdown-item v-model="checkDate" :options="dateList" @change="dateChange" />
 </van-dropdown-menu>
 <!-- 日期区间 -->
