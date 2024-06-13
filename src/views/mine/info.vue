@@ -4,39 +4,6 @@ import { userOrderListStore } from '../../stores/order.js'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const userOrder = userOrderListStore()
-const value1 = ref(0);
-const value3 = ref('z');
-const checkDate = ref('date')
-const canlendarShow = ref(false)
-const customDate = ref('')
-function onConfirm(value){
-  canlendarShow.value = false
-  const state = value[0].getMonth() + 1 + '月'+value[0].getDate() + '日' 
-  const end = value[1].getMonth() + 1 + '月'+value[1].getDate() + '日' 
-  customDate.value = state + '-' + end
-}
-const dateChange = (value) =>{
-  console.log(value)
-  if(value === 'custom'){
-    canlendarShow.value = true
-  }
-}
-const dateList = ref([
-  { text: '今日', value: 'date' },
-  { text: '本周', value: 'week' },
-  { text: '本月', value: 'month' },
-  { text: `自定义时间${customDate.value}`, value: 'custom' },
-])
-const option1 = [
-  { text: '全部商家', value: 0 },
-  { text: '上海迪士尼', value: 1 },
-  { text: '上海欢乐谷', value: 2 },
-];
-const option3 = [
-  { text: '全部状态', value: 'z' },
-  { text: '已下单', value: 'x' },
-  { text: '已完成', value: 'c' },
-];
 function toinfo(id){
     router.push({
         path: '/orderinfo',
@@ -47,19 +14,17 @@ function toinfo(id){
 }
 </script>
 <template>
-<van-sticky>
-<van-dropdown-menu active-color="#ee0a24">
-  <van-dropdown-item v-model="value1" :options="option1" />
-  <van-dropdown-item v-model="checkDate" :options="dateList" @change="dateChange" />
-  <van-dropdown-item v-model="value3" :options="option3" />
-</van-dropdown-menu>
-</van-sticky>
-<!-- 日期区间 -->
-<van-calendar v-model:show="canlendarShow" type="range" @confirm="onConfirm" 
-color="#ee0a24" allow-same-day position="top"
-/>
+<div class="headeraaa">
+  <div class="title">带客信息</div>
+  <div>商家：上海迪士尼</div>
+  <div>带客游玩批次：1003202406060001</div>
+</div>
+<div class="tips">
+    详情：
+</div>
 <div class="list">
-    <div class="item" v-for="item in userOrder.list" :key="item.id" @click="toinfo(item.id)">
+    <div v-for="item in userOrder.list" :key="item.id" >
+      <div v-if="item.status === '0'" class="item" @click="toinfo(item.id)" >
         <div class="header">
             <div class="header-left">
                 <div class="name">{{ item.merchantName }}</div>
@@ -74,18 +39,36 @@ color="#ee0a24" allow-same-day position="top"
             <img src="../../assets/jpg/dsn.jpg" alt="" />
             <div class="info">
                 <div class="name">{{ item.projectName }}</div>
-                <div class="desc">价格：￥{{ item.projectjiage }}/ 位</div>
-                <div class="desc">下单人：{{ item.person }}</div>
+                <div class="desc">佣金：￥{{ item.yongjin }}</div>
                 <div class="desc">数量：x {{ item.projectNum }}</div>
             </div>
             <div class="amt">
-                <div>￥{{ item.allAmount }}</div>
+                <div>￥{{ item.jiesuan }}</div>
             </div>
         </div>  
+      </div>
     </div>
 </div>
 </template>
 <style lang="scss" scoped>
+.headeraaa {
+    background-color: #fff;
+    padding: 12px;
+    font-size: 14px;
+    color: #666666;
+    .title {
+        font-weight: 600;
+        color: #333333;
+    }
+    div {
+        margin-bottom: 7px;
+    }
+}
+.tips {
+    font-size: 14px;
+    color: #666666;
+    margin: 12px 12px 0;
+}
 .list {
     margin: 12px;
 }
@@ -99,7 +82,7 @@ color="#ee0a24" allow-same-day position="top"
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     .header-left {
         flex-grow: 1;
         display: flex;

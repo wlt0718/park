@@ -105,6 +105,14 @@ const routes = [
         }
     },
     {
+        path: '/orderinfo',
+        name: 'orderInfo',
+        component: () => import('@/views/mine/orderinfo.vue'),
+        meta: {
+            title: '订单详情'
+        }
+    },
+    {
         path: '/listInfo',
         name: 'listInfo',
         component: () => import('@/views/guide/playlistInfo.vue'),
@@ -126,6 +134,14 @@ const routes = [
         component: () => import('@/views/merchant/enter.vue'),
         meta: {
             title: '入驻新商家'
+        }
+    },
+    {
+        path: '/info',
+        name: 'info',
+        component: () => import('@/views/mine/info.vue'),
+        meta: {
+            title: '带客详情'
         }
     },
 
