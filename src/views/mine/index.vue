@@ -14,11 +14,6 @@ const toEnterStore = () => {
         name: 'enterStore'
     })
 }
-const toPlayList = () =>{
-    router.push({
-        name: 'playList'
-    })
-}
 const toBalance = () => {
     router.push({
         name: 'balance'
@@ -47,11 +42,6 @@ const toOrder = () => {
     <div class="nav-item" @click="toOrder">
         <van-icon name="wap-home-o" class="left-icon" />
         <span>游客订单</span>
-        <van-icon name="arrow" class="right-icon" />
-    </div>
-    <div class="nav-item" @click="toPlayList">
-        <van-icon name="wap-nav" class="left-icon" />
-        <span>带客列表</span>
         <van-icon name="arrow" class="right-icon" />
     </div>
     <div class="nav-item" @click="toEnterStore">
