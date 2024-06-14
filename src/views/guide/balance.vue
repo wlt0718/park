@@ -122,11 +122,13 @@ const data = ref([
 ])
 </script>
 <template>
+<van-sticky>
 <van-dropdown-menu>
   <van-dropdown-item v-model="checkGuide" :options="guideList" />
   <van-dropdown-item v-model="checkStatus" :options="statusList" />
   <van-dropdown-item v-model="checkDate" :options="dateList" @change="dateChange" />
 </van-dropdown-menu>
+</van-sticky>
 <van-calendar v-model:show="canlendarShow" type="range" @confirm="onConfirm" 
   allow-same-day position="top"
 />

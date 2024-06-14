@@ -39,7 +39,7 @@ const qrcodeMerchant = reactive({
 function createQrcode(item){
   console.log(item)
   qrcodeMerchant.merchantName = item.merchantName
-  qrcodeValue.value = `https://wlt0718.github.io/park-visitor/#/merchantorder?type=g&merchant=${item.id}`
+  qrcodeValue.value = `https://wlt0718.github.io/park-visitor/#/merchantinfo?type=g&merchant=${item.id}`
   popupShow.value = true
 }
 </script>

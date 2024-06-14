@@ -23,7 +23,6 @@ const data = userOrder.list.find(el => {
     <div class="headeraaa">
         <div class="header-left">
             <div class="name">{{ data.merchantName }}</div>
-            <van-icon name="arrow" />
         </div>
     </div>
   <div class="bodys">

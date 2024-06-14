@@ -63,7 +63,6 @@ color="#ee0a24" allow-same-day position="top"
         <div class="header">
             <div class="header-left">
                 <div class="name">{{ item.merchantName }}</div>
-                <van-icon name="arrow" />
             </div>
             <div class="status">订单状态：
               <span v-if="item.status === '0'">已下单</span>
